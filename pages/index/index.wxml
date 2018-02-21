@@ -1,13 +1,23 @@
 <!--index.wxml-->
+<link href="https://fonts.proxy.ustclug.org/icon?family=Material+Icons|Roboto:100,400,700,900"
+    rel="stylesheet"></link>
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+  <view class="search">
+    <view class="material-icons">search</view>
+    <input bindinput="updateSearch" bindfocus="searchFocus" bindblur="searchBlur" type="text" placeholder="搜索"></input>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view class="list">
+    <view wx:for="{{ list }}" class="{{ item.icon !== null ? 'has-icon' : '' }} entry" wx:key="item.id">
+      <image
+        class="entry-icon"
+        wx:if="{{ item.icon !== null}}"
+        src="{{ backend + '/store/' + item.icon }}"
+        mode="aspectFit"></image>
+      <view class="entry-cate">{{ item.category }} <view class="material-icons">keyboard_arrow_right</view></view>
+      <view class="entry-name">{{ item.name }}</view>
+      <view class="entry-tagline" wx:if="{{ item.tags.length > 0 }}">
+        <view class="entry-tag" wx:for="{{ item.tags }}">{{ item }}</view>
+      </view>
+    </view>
   </view>
 </view>

@@ -5,7 +5,7 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#F5F5F5",
     "navigationBarTitleText": "随便叫啥",
     "navigationBarTextStyle":"black"
   }

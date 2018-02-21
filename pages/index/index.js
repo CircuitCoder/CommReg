@@ -1,13 +1,19 @@
 //index.js
 //获取应用实例
 const app = getApp()
+const util = require('../../utils/util.js');
+const CONFIG= require('../../config.js');
+
+let debouncer = null;
+const DEBOUNCE_TIMEOUT = 500; // ms
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    searchStr: '',
+    searchHasFocus: false,
+    updating: false,
+    backend: CONFIG.backend,
+    list: [],
   },
   //事件处理函数
   bindViewTap: function() {
@@ -15,40 +21,43 @@ Page({
       url: '../logs/logs'
     })
   },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
-  },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
+  updateSearch(ev) {
     this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  }
+      searchStr: ev.detail.value,
+    });
+    this.debounceUpdate();
+  },
+  searchFocus(ev) {
+    this.setData({
+      searchHasFocus: true,
+    });
+  },
+  searchBlur(ev) {
+    this.setData({
+      searchHasFocus: false,
+    });
+  },
+  debounceUpdate() {
+    if(debouncer !== null) clearTimeout(debouncer);
+    debouncer = setTimeout(() => {
+      this.updateList();
+    }, DEBOUNCE_TIMEOUT);
+  },
+  updateList() {
+    // TODO: cancel previous request
+    if(this.data.updating) return;
+    this.setData({
+      updating: true,
+    });
+    // TODO: unavailable ones
+    util.query(true, this.data.searchStr.split(' '), result => {
+      this.setData({
+        updating: false,
+        list: result,
+      });
+    });
+  },
+  onLoad() {
+    this.updateList();
+  },
 })

@@ -16,16 +16,19 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
-function query(available, tokens) {
+function query(available, tokens, cb) {
   const type = available ? 'available' : 'disbanded';
   const tailing = tokens.map(encodeURIComponent).join('+');
   const uri = `${CONFIG.backend}/query/${type}/${tailing}`;
-  fetch(uri).then(resp => {
-    console.log(resp);
-  });;
+  wx.request({
+    url: uri,
+    success: res => {
+      cb(res.data);
+    },
+  });
 }
 
 module.exports = {
   formatTime,
-  fetch,
+  query,
 }
