@@ -10,6 +10,8 @@ view, scroll-view {
   padding-top: 120rpx;
   box-sizing: border-box;
   color: rgba(0,0,0,.87);
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .container.no-appbar {
