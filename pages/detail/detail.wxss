@@ -1,0 +1,92 @@
+.info-panel {
+  padding: 30rpx;
+  display: flex;
+}
+
+.primary-info {
+  flex: 1;
+  padding: 10rpx 20rpx;
+}
+
+.name {
+  font-size: 56rpx;
+  line-height: 64rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+.tag {
+  display: inline-block;
+  color: rgba(0,0,0,.54);
+  margin-right: 12rpx;
+}
+
+.info {
+  font-size: 32rpx;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.info-content {
+  position: relative;
+  color: rgba(0,0,0,.7);
+  line-height: 40rpx;
+  flex: 1;
+  padding-left: 12rpx;
+
+  border-left: rgba(0,0,0,.12) 4rpx solid;
+}
+
+.info-content::before {
+  content: ' ';
+  font-size: 0;
+  width: 12rpx;
+  height: 12rpx;
+  border-top: rgba(0,0,0,.12) 4rpx solid;
+  border-left: rgba(0,0,0,.12) 4rpx solid;
+  background: white;
+  transform: rotate(-45deg);
+  position: absolute;
+  left: -8rpx;
+  top: calc(50% - 8rpx);
+}
+
+.info .material-icons {
+  color: rgba(0,0,0,.38);
+  font-size: 36rpx;
+  margin-right: 12rpx;
+}
+
+.icon {
+  width: 180rpx;
+  height: 180rpx;
+  margin-right: 30rpx;
+}
+
+.desc {
+  padding: 30rpx;
+  background: #F0F0F0;
+  white-space: pre;
+  font-size: 28rpx;
+  line-height: 32rpx;
+  color: rgba(0,0,0,.54);
+}
+
+.additional {
+  padding: 30rpx;
+}
+
+.additional .info {
+  font-size: 24rpx;
+  line-height: 32rpx;
+  color: rgba(0,0,0,.38);
+}
+
+.additional .info .material-icons {
+  color: rgba(0,0,0,.38);
+}
+
+.additional .info .tag {
+  color: rgba(0,0,0,.38);
+}

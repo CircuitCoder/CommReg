@@ -2,10 +2,15 @@
 <view class="container">
   <view class="search appbar">
     <view class="material-icons">search</view>
-    <input bindinput="updateSearch" bindfocus="searchFocus" bindblur="searchBlur" type="text" placeholder="搜索"></input>
+    <input bindinput="updateSearch" value="{{ initStr }}" bindfocus="searchFocus" bindblur="searchBlur" type="text" placeholder="搜索"></input>
   </view>
   <view class="list" wx:if="{{ list && list.length > 0 }}">
-    <view wx:for="{{ list }}" class="{{ item.icon !== null ? 'has-icon' : '' }} entry" wx:key="item.id">
+    <view
+      wx:for="{{ list }}"
+      class="{{ item.icon !== null ? 'has-icon' : '' }} entry"
+      wx:key="item.id"
+      data-id="{{ item.id }}"
+      bindtap="entryTap">
       <image
         class="entry-icon"
         wx:if="{{ item.icon !== null}}"

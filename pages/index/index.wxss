@@ -38,7 +38,6 @@
 }
 
 .entry-tagline {
-  margin-top: 12rpx;
   height: auto;
   font-size: 0; /* Supress whitespaces */
 }
@@ -52,6 +51,8 @@
   color: rgba(0,0,0,.38);
   background: #E0E0E0;
   font-size: 20rpx;
+  margin-right: 12rpx;
+  margin-top: 12rpx;
 }
 
 .entry-cate {
@@ -78,4 +79,5 @@
 
 .entry.has-icon {
   padding-left: 200rpx;
+  min-height: 180rpx;
 }

@@ -9,6 +9,7 @@ const DEBOUNCE_TIMEOUT = 500; // ms
 
 Page({
   data: {
+    initStr: '',
     searchStr: '',
     searchHasFocus: false,
     updating: true,
@@ -16,10 +17,13 @@ Page({
     list: [],
   },
   //事件处理函数
-  gotoDetail: function(id) {
+  gotoDetail(id) {
     wx.navigateTo({
       url: `../detail/detail?id=${id}`,
     })
+  },
+  entryTap(ev) {
+    this.gotoDetail(ev.currentTarget.dataset.id);
   },
   updateSearch(ev) {
     this.setData({
@@ -55,7 +59,13 @@ Page({
       });
     });
   },
-  onLoad() {
+  onLoad(query) {
+    if(query.str) {
+      this.setData({
+        searchStr: query.str,
+        initStr: query.str,
+      });
+    }
     this.updateList();
   },
 })

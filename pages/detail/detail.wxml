@@ -1,12 +1,41 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="search appbar">
-    <i class="material-icons">back</i>
-    <view class="brand">{{ loading ? 'loading' : entry.name }}</view>
-  </view>
+<view class="container no-appbar">
+  <view class="appbar"></view>
   <view class="detail">
-    <view class="syncing-backdrop" wx:if="{{ loading }}">
-      <i class="material-icons">sync</i>
+  </view>
+  <view class="syncing-backdrop" wx:if="{{ loading }}">
+    <i class="material-icons">sync</i>
+  </view>
+  <view class="info-panel" wx:if="{{ entry }}">
+    <image class="icon"
+      src="{{ backend + '/store/' + entry.icon }}"
+      wx:if="{{ entry.icon !== null }}"
+      mode="aspectFit"></image>
+    <view class="primary-info">
+      <view class="name">{{ entry.name }}</view>
+      <view class="info">
+        <i class="material-icons">inbox</i>
+        <view class="info-content">{{ entry.category }}</view>
+      </view>
+      <view class="info">
+        <i class="material-icons">flight_takeoff</i>
+        <view class="info-content">{{ entry.creation }}</view>
+      </view>
+      <view class="info" wx:if="{{ entry.disbanded }}">
+        <i class="material-icons">flight_land</i>
+        <view class="info-content">{{ entry.disbanded }}</view>
+      </view>
+    </view>
+  </view>
+  <view class="desc" wx:if="{{ entry.disbanded !== null }}">{{ entry.desc }}</view>
+  <view class="additional">
+    <view class="info" wx:if="{{ entry.tags.length > 0 }}">
+      <i class="material-icons">label</i>
+      <view class="info-content">
+        <view class="tag" wx:for="{{ entry.tags }}" data-tag="{{ item }}" bindtap="gotoTag">
+          {{ item }}
+        </view>
+      </view>
     </view>
   </view>
 </view>

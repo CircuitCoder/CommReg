@@ -1,4 +1,3 @@
-
 const util = require('../../utils/util.js');
 const CONFIG= require('../../config.js');
 
@@ -11,15 +10,17 @@ Page({
   },
 
   onLoad(params) {
-    util.detail(params.id, resolve)
+    wx.setNavigationBarTitle({ title: '跟服务器打电话中...' })
+    util.detail(params.id)
       .then(data => {
         this.setData({
           entry: data
         });
+        wx.setNavigationBarTitle({ title: `${data.name} - 信息` })
 
         const segs = [...data.tags];
         segs.push(data.category);
-        return util.query(segs);
+        return util.query(true, segs);
       })
       .then(data => {
         this.setData({
@@ -27,5 +28,15 @@ Page({
           loading: false,
         });
       });
+  },
+  gotoTag(ev) {
+    wx.navigateTo({
+      url: `../index/index?str=${ev.currentTarget.dataset.tag}`,
+    })
+  },
+  gotoCategory() {
+    wx.navigateTo({
+      url: `../index/index?str=${this.entry.category}`,
+    })
   },
 });

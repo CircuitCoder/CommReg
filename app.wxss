@@ -12,6 +12,10 @@ view, scroll-view {
   color: rgba(0,0,0,.87);
 }
 
+.container.no-appbar {
+  padding-top: 0;
+}
+
 .appbar {
   height: 120rpx;
   padding: 0 40rpx;
@@ -27,6 +31,11 @@ view, scroll-view {
   justify-content: center;
   background: #F5F5F5;
   z-index: 16;
+}
+
+.no-appbar .appbar {
+  /* To perserve shadow effect */
+  transform: translateY(-120rpx);
 }
 
 .appbar input {
@@ -69,6 +78,10 @@ view, scroll-view {
   justify-content: center;
   backdrop-filter: blur(2px);
   pointer-events: none;
+}
+
+.no-appbar .syncing-backdrop {
+  top: 0;
 }
 
 .syncing-backdrop .material-icons {
