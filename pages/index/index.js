@@ -9,12 +9,13 @@ const DEBOUNCE_TIMEOUT = 500; // ms
 
 Page({
   data: {
-    initStr: '',
     searchStr: '',
     searchHasFocus: false,
     updating: true,
     backend: CONFIG.backend,
     list: [],
+    avail: true,
+    filterShown: false,
   },
   //事件处理函数
   gotoDetail(id) {
@@ -52,7 +53,10 @@ Page({
   },
   updateList() {
     // TODO: cancel previous request
-    util.query(true, this.data.searchStr.split(' ')).then(result => {
+    this.setData({
+      updating: true,
+    });
+    util.query(this.data.avail, this.data.searchStr.split(' ')).then(result => {
       this.setData({
         updating: false,
         list: result,
@@ -60,12 +64,36 @@ Page({
     });
   },
   onLoad(query) {
-    if(query.str) {
-      this.setData({
-        searchStr: query.str,
-        initStr: query.str,
-      });
-    }
+    if(query.str)
+      this.setSearch(query.str);
+    else
+      this.updateList();
+  },
+  setSearch(str) {
+    this.setData({ searchStr: str });
+    this.updateList();
+  },
+
+  toggleFilter() {
+    this.setData({
+      filterShown: !this.data.filterShown,
+    });
+  },
+
+  filterAvail() {
+    this.setData({
+      avail: true,
+      filterShown: false,
+    });
+    this.updateList();
+  },
+
+  filterDisbd() {
+    console.log("HA");
+    this.setData({
+      avail: false,
+      filterShown: false,
+    });
     this.updateList();
   },
 })

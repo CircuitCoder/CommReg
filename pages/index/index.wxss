@@ -1,4 +1,35 @@
 /**index.wxss**/
+.filter {
+  position: fixed;
+  height: 120rpx;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: rgba(0,0,0,.3) 0 4rpx 12rpx;
+  transform: translateY(-12rpx);
+  transition: transform .2s ease-in;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  z-index: 2;
+  background: #FAFAFA;
+}
+
+.filter.extended {
+  transform: translateY(120rpx);
+  transition: transform .2s ease-out;
+}
+
+.filter-item {
+  cursor: pointer;
+}
+
+.filter-item.active {
+  font-weight: bold;
+}
+
 .list {
   padding: 40rpx 20rpx;
   z-index: 1;

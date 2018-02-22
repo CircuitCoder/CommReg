@@ -15,6 +15,19 @@
   margin-bottom: 20rpx;
 }
 
+.disbanded .name {
+  text-decoration: line-through;
+  color: rgba(0,0,0,.38);
+  text-decoration-color: black;
+  margin-bottom: 0;
+}
+
+.disbanded-hint {
+  color: rgba(0,0,0,.38);
+  margin-bottom: 20rpx;
+  font-size: 24rpx;
+}
+
 .tag {
   display: inline-block;
   color: rgba(0,0,0,.54);
@@ -97,6 +110,7 @@
   margin-left: -12rpx;
   height: 340rpx;
   padding: 0 12rpx;
+  background: #E0E0E0;
 }
 
 .relevant-content {
@@ -112,6 +126,7 @@
   height: 260rpx;
   box-shadow: rgba(0,0,0,.3) 0 2px 6px;
   display: inline-block;
+  background: white;
 }
 
 .relevant:last-child {
@@ -124,7 +139,7 @@
   padding: 0 24rpx;
   width: 100%;
   box-sizing: border-box;
-  text-overflow:ellipsis;
+  text-overflow: ellipsis;
   overflow: hidden;
 }
 

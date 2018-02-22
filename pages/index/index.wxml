@@ -2,7 +2,12 @@
 <view class="container">
   <view class="search appbar">
     <view class="material-icons">search</view>
-    <input bindinput="updateSearch" value="{{ initStr }}" bindfocus="searchFocus" bindblur="searchBlur" type="text" placeholder="搜索"></input>
+    <input bindinput="updateSearch" value="{{ searchStr }}" bindfocus="searchFocus" bindblur="searchBlur" type="text" placeholder="搜索"></input>
+    <view class="material-icons" bindtap="toggleFilter">filter_list</view>
+  </view>
+  <view class="filter {{ filterShown ? 'extended' : '' }}">
+    <view class="filter-item {{ avail ? 'active' : '' }}" bindtap="filterAvail">现存</view>
+    <view class="filter-item {{ avail ? '' : 'active' }}" bindtap="filterDisbd">已注销</view>
   </view>
   <view class="list" wx:if="{{ list && list.length > 0 }}">
     <view

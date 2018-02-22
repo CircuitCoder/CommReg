@@ -29,14 +29,21 @@ Page({
         });
       });
   },
-  gotoTag(ev) {
-    wx.navigateTo({
-      url: `../index/index?str=${ev.currentTarget.dataset.tag}`,
+  gotoId(ev) {
+    wx.redirectTo({
+      url: `detail?id=${ev.currentTarget.dataset.id}`,
     })
   },
-  gotoCategory() {
-    wx.navigateTo({
-      url: `../index/index?str=${this.data.entry.category}`,
-    })
+  gotoTag(ev) {
+    const pages = getCurrentPages();
+    const parent = pages[pages.length-2];
+    parent.setSearch(ev.currentTarget.dataset.tag);
+    wx.navigateBack({ delta: 1 });
+  },
+  gotoCategory(ev) {
+    var pages = getCurrentPages();
+    const parent = pages[pages.length-2];
+    parent.setSearch(ev.currentTarget.dataset.category);
+    wx.navigateBack({ delta: 1 });
   },
 });

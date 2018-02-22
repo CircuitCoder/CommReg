@@ -6,31 +6,32 @@
   <view class="syncing-backdrop" wx:if="{{ loading }}">
     <i class="material-icons">sync</i>
   </view>
-  <view class="info-panel" wx:if="{{ entry }}">
+  <view class="info-panel {{ entry.disbandment ? 'disbanded' : '' }}" wx:if="{{ entry }}">
     <image class="icon"
       src="{{ backend + '/store/' + entry.icon }}"
       wx:if="{{ entry.icon !== null }}"
       mode="aspectFit"></image>
     <view class="primary-info">
       <view class="name">{{ entry.name }}</view>
+      <view class="disbanded-hint" wx:if="{{ entry.disbandment }}">已注销</view>
       <view class="info">
         <i class="material-icons">inbox</i>
-        <view class="info-content" bindtap="gotoCategory">{{ entry.category }}</view>
+        <view class="info-content" data-category="{{ entry.category }}" bindtap="gotoCategory">{{ entry.category }}</view>
       </view>
       <view class="info">
         <i class="material-icons">flight_takeoff</i>
         <view class="info-content">{{ entry.creation }}</view>
       </view>
-      <view class="info" wx:if="{{ entry.disbanded }}">
+      <view class="info" wx:if="{{ entry.disbandment }}">
         <i class="material-icons">flight_land</i>
-        <view class="info-content">{{ entry.disbanded }}</view>
+        <view class="info-content">{{ entry.disbandment }}</view>
       </view>
     </view>
   </view>
-  <view class="desc" wx:if="{{ entry.disbanded !== null }}">{{ entry.desc }}</view>
+  <view class="desc" wx:if="{{ !entry.disbandment }}">{{ entry.desc }}</view>
   <view class="relevant-list">
     <scroll-view class="relevant-content" scroll-x>
-      <view class="relevant" wx:for="{{ relevant }}">
+      <view class="relevant" wx:for="{{ relevant }}" data-id="{{ item.id }}" bindtap="gotoId">
         <view class="img-placeholder">
           <image src="{{ backend + '/store/' + item.icon }}"
             wx:if="{{ item.icon }}"
