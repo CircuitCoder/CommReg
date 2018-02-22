@@ -11,14 +11,14 @@ Page({
   data: {
     searchStr: '',
     searchHasFocus: false,
-    updating: false,
+    updating: true,
     backend: CONFIG.backend,
     list: [],
   },
   //事件处理函数
-  bindViewTap: function() {
+  gotoDetail: function(id) {
     wx.navigateTo({
-      url: '../logs/logs'
+      url: `../detail/detail?id=${id}`,
     })
   },
   updateSearch(ev) {
@@ -38,6 +38,9 @@ Page({
     });
   },
   debounceUpdate() {
+    this.setData({
+      updating: true,
+    });
     if(debouncer !== null) clearTimeout(debouncer);
     debouncer = setTimeout(() => {
       this.updateList();
@@ -45,16 +48,12 @@ Page({
   },
   updateList() {
     // TODO: cancel previous request
-    if(this.data.updating) return;
-    this.setData({
-      updating: true,
-    });
-    // TODO: unavailable ones
     util.query(true, this.data.searchStr.split(' '), result => {
       this.setData({
         updating: false,
         list: result,
       });
+      console.log(this.data.updating);
     });
   },
   onLoad() {

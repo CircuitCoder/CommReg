@@ -1,8 +1,6 @@
 <!--index.wxml-->
-<link href="https://fonts.proxy.ustclug.org/icon?family=Material+Icons|Roboto:100,400,700,900"
-    rel="stylesheet"></link>
 <view class="container">
-  <view class="search">
+  <view class="search appbar">
     <view class="material-icons">search</view>
     <input bindinput="updateSearch" bindfocus="searchFocus" bindblur="searchBlur" type="text" placeholder="搜索"></input>
   </view>
@@ -18,6 +16,9 @@
       <view class="entry-tagline" wx:if="{{ item.tags.length > 0 }}">
         <view class="entry-tag" wx:for="{{ item.tags }}">{{ item }}</view>
       </view>
+    </view>
+    <view class="syncing-backdrop" wx:if="{{ updating }}">
+      <i class="material-icons">sync</i>
     </view>
   </view>
 </view>
