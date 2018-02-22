@@ -15,7 +15,7 @@
       <view class="name">{{ entry.name }}</view>
       <view class="info">
         <i class="material-icons">inbox</i>
-        <view class="info-content">{{ entry.category }}</view>
+        <view class="info-content" bindtap="gotoCategory">{{ entry.category }}</view>
       </view>
       <view class="info">
         <i class="material-icons">flight_takeoff</i>
@@ -28,6 +28,20 @@
     </view>
   </view>
   <view class="desc" wx:if="{{ entry.disbanded !== null }}">{{ entry.desc }}</view>
+  <view class="relevant-list">
+    <scroll-view class="relevant-content" scroll-x>
+      <view class="relevant" wx:for="{{ relevant }}">
+        <view class="img-placeholder">
+          <image src="{{ backend + '/store/' + item.icon }}"
+            wx:if="{{ item.icon }}"
+            mode="aspectFit"></image>
+        </view>
+        <view class="relevant-name">
+          {{ item.name }}
+        </view>
+      </view>
+    </scroll-view>
+  </view>
   <view class="additional">
     <view class="info" wx:if="{{ entry.tags.length > 0 }}">
       <i class="material-icons">label</i>

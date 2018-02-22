@@ -90,3 +90,50 @@
 .additional .info .tag {
   color: rgba(0,0,0,.38);
 }
+
+.relevant-list {
+  box-shadow: rgba(0,0,0,.3) 0 4rpx 12rpx inset;
+  width: calc(100% + 24rpx);
+  margin-left: -12rpx;
+  height: 340rpx;
+  padding: 0 12rpx;
+}
+
+.relevant-content {
+  box-sizing: border-box;
+  white-space: nowrap;
+  height: 340rpx;
+}
+
+.relevant {
+  margin: 40rpx;
+  margin-right: 0;
+  width: 180rpx;
+  height: 260rpx;
+  box-shadow: rgba(0,0,0,.3) 0 2px 6px;
+  display: inline-block;
+}
+
+.relevant:last-child {
+  margin-right: 40rpx;
+}
+
+.relevant-name {
+  line-height: 80rpx;
+  font-size: 32rpx;
+  padding: 0 24rpx;
+  width: 100%;
+  box-sizing: border-box;
+  text-overflow:ellipsis;
+  overflow: hidden;
+}
+
+.img-placeholder {
+  height: 180rpx;
+  width: 180rpx;
+}
+
+.img-placeholder image {
+  height: 180rpx;
+  width: 180rpx;
+}

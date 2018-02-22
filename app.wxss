@@ -20,7 +20,7 @@ view, scroll-view {
   height: 120rpx;
   padding: 0 40rpx;
   box-sizing: border-box;
-  box-shadow: rgba(0,0,0,.3) 0 4px 12px;
+  box-shadow: rgba(0,0,0,.3) 0 8rpx 24rpx;
   position: fixed;
   left: 0;
   right: 0;

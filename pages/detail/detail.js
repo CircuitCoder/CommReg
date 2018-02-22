@@ -4,7 +4,7 @@ const CONFIG= require('../../config.js');
 Page({
   data: {
     entry: null,
-    relevent: null,
+    relevant: null,
     loading: true,
     backend: CONFIG.backend,
   },
@@ -24,7 +24,7 @@ Page({
       })
       .then(data => {
         this.setData({
-          relevent: data,
+          relevant: data.filter(e => e.id !== this.data.entry.id),
           loading: false,
         });
       });
@@ -36,7 +36,7 @@ Page({
   },
   gotoCategory() {
     wx.navigateTo({
-      url: `../index/index?str=${this.entry.category}`,
+      url: `../index/index?str=${this.data.entry.category}`,
     })
   },
 });
