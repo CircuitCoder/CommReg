@@ -1,12 +1,13 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/detail/detail",
     "pages/logs/logs"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#F5F5F5",
-    "navigationBarTitleText": "随便叫啥",
+    "navigationBarTitleText": "喵喵",
     "navigationBarTextStyle":"black"
   }
 }

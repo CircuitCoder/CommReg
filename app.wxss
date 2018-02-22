@@ -1,9 +1,15 @@
 /**app.wxss**/
+view, scroll-view {
+  box-sizing: inherit;
+}
+
 .container {
   height: 100%;
   width: 100%;
   background: #FAFAFA;
   padding-top: 120rpx;
+  box-sizing: border-box;
+  color: rgba(0,0,0,.87);
 }
 
 .appbar {
@@ -70,6 +76,14 @@
   font-size: 120rpx;
   animation: syncing .75s ease;
   animation-iteration-count: infinite;
+}
+
+.end-indicator {
+  font-size: 30rpx;
+  line-height: 36rpx;
+  color: rgba(0,0,0,.38);
+  margin-top: 40rpx;
+  text-align: center;
 }
 
 @import './material-icons';

@@ -4,4 +4,9 @@
     <i class="material-icons">back</i>
     <view class="brand">{{ loading ? 'loading' : entry.name }}</view>
   </view>
+  <view class="detail">
+    <view class="syncing-backdrop" wx:if="{{ loading }}">
+      <i class="material-icons">sync</i>
+    </view>
+  </view>
 </view>

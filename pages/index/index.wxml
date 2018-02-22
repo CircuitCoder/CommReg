@@ -4,7 +4,7 @@
     <view class="material-icons">search</view>
     <input bindinput="updateSearch" bindfocus="searchFocus" bindblur="searchBlur" type="text" placeholder="搜索"></input>
   </view>
-  <view class="list">
+  <view class="list" wx:if="{{ list && list.length > 0 }}">
     <view wx:for="{{ list }}" class="{{ item.icon !== null ? 'has-icon' : '' }} entry" wx:key="item.id">
       <image
         class="entry-icon"
@@ -17,8 +17,15 @@
         <view class="entry-tag" wx:for="{{ item.tags }}">{{ item }}</view>
       </view>
     </view>
-    <view class="syncing-backdrop" wx:if="{{ updating }}">
-      <i class="material-icons">sync</i>
+    <view class="end-indicator">
+      喵，没有更多结果啦
     </view>
+  </view>
+  <view class="list empty" wx:else>
+    <i class="material-icons">highlight</i>
+    喵喵，这里什么都没有
+  </view>
+  <view class="syncing-backdrop" wx:if="{{ updating }}">
+    <i class="material-icons">sync</i>
   </view>
 </view>

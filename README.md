@@ -12,6 +12,9 @@ Then use Weixin developer tools to deploy the application
 Follow the production usage guide first, then use Weixin developer tools to view the changes.
 You may want to run ESLint style checker before each commit. To do so, create a pre-commit hook.
 
+### TODO
+- [ ] Only display the list partially
+
 ## Maintainer
 - Liu Xiaoyi (@CircuitCoder)
 

@@ -17,18 +17,33 @@ const formatNumber = n => {
 }
 
 function query(available, tokens, cb) {
-  const type = available ? 'available' : 'disbanded';
-  const tailing = tokens.map(encodeURIComponent).join('+');
-  const uri = `${CONFIG.backend}/query/${type}/${tailing}`;
-  wx.request({
-    url: uri,
-    success: res => {
-      cb(res.data);
-    },
+  return new Promise((resolve, reject) => {
+    const type = available ? 'available' : 'disbanded';
+    const tailing = tokens.map(encodeURIComponent).join('+');
+    const uri = `${CONFIG.backend}/query/${type}/${tailing}`;
+    wx.request({
+      url: uri,
+      success: res => {
+        resolve(res.data);
+      },
+    });
+  });
+}
+
+function detail(id) {
+  return new Promise((resolve, reject) => {
+    const uri = `${CONFIG.backend}/query/fetch/${id}`;
+    wx.request({
+      url: uri,
+      success: res => {
+        resolve(res.data);
+      },
+    });
   });
 }
 
 module.exports = {
   formatTime,
   query,
+  detail,
 }

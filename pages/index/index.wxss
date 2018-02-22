@@ -4,6 +4,23 @@
   z-index: 1;
 }
 
+.list.empty {
+  height: calc(100vh - 120rpx);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  line-height: 36rpx;
+  color: rgba(0,0,0,.38);
+}
+
+.list.empty .material-icons {
+  font-size: 120rpx;
+  margin-bottom: 20rpx;
+  color: rgba(0,0,0,.38);
+}
+
 .entry {
   margin-bottom: 20rpx;
   padding: 30rpx 40rpx;

@@ -48,12 +48,11 @@ Page({
   },
   updateList() {
     // TODO: cancel previous request
-    util.query(true, this.data.searchStr.split(' '), result => {
+    util.query(true, this.data.searchStr.split(' ')).then(result => {
       this.setData({
         updating: false,
         list: result,
       });
-      console.log(this.data.updating);
     });
   },
   onLoad() {
