@@ -58,7 +58,7 @@
   height: 12rpx;
   border-top: rgba(0,0,0,.12) 4rpx solid;
   border-left: rgba(0,0,0,.12) 4rpx solid;
-  background: white;
+  background: #FAFAFA;
   transform: rotate(-45deg);
   position: absolute;
   left: -8rpx;

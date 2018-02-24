@@ -78,8 +78,10 @@ view, scroll-view {
   display: flex;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(2px);
   pointer-events: none;
+  background: rgba(0,0,0,.12);
+
+  z-index: 150;
 }
 
 .no-appbar .syncing-backdrop {

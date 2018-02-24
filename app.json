@@ -1,12 +1,12 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/detail/detail"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F5F5F5",
-    "navigationBarTitleText": "喵喵",
-    "navigationBarTextStyle":"black"
+    "navigationBarTitleText": "社团查询",
+    "navigationBarTextStyle": "black"
   }
 }
