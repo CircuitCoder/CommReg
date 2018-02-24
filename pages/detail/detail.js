@@ -6,6 +6,7 @@ Page({
     entry: null,
     relevant: null,
     loading: true,
+    rendered: '',
     backend: CONFIG.backend,
   },
 
@@ -16,7 +17,9 @@ Page({
         this.setData({
           entry: data
         });
-        wx.setNavigationBarTitle({ title: `${data.name} - 信息` })
+        wx.setNavigationBarTitle({ title: `${data.name} - 信息` });
+
+        this.setData({ rendered: util.render(data.desc, data.files) });
 
         const segs = [...data.tags];
         segs.push(data.category);

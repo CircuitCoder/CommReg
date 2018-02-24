@@ -42,8 +42,50 @@ function detail(id) {
   });
 }
 
+function renderPara(p, images) {
+  if(p.indexOf('\n') === -1) {
+    if(p.indexOf("# ") === 0)
+      return {
+        type: 'node',
+        name: 'h1',
+        attrs: { class: 'desc-title' },
+        children: [{ type: 'text', text: p.substr(2) }],
+      };
+    if (p.match(/^<\d+>$/)) {
+      const idStr = p.match(/^<(\d+)>$/)[1];
+      const id = parseInt(idStr, 10);
+      if (id > images.length || id === 0)
+        return { type: 'text', text: '[Deleted Image]' };
+      else
+        return {
+          type: 'node', name: 'img', attrs: {
+            src: `${CONFIG.backend}/store/${images[id-1]}`,
+            class: 'desc-img'
+          }
+        };
+    }
+  }
+  const children = p.split('\n')
+    .map(e => [{ type: 'text', text: e }, { type: 'node', name: 'br' }])
+    .reduce((attr, a) => attr.concat(a), []);
+  return {
+    type: 'node',
+    name: 'div',
+    attrs: { class: 'desc-para' },
+    children,
+  };
+}
+
+function render(d, images) {
+  return d
+    .replace('\n\n\n', '\n\n')
+    .split('\n\n')
+    .map(e => renderPara(e, images));
+}
+
 module.exports = {
   formatTime,
   query,
   detail,
+  render,
 }

@@ -1,0 +1,28 @@
+.desc-title {
+  margin: 40rpx 0 20rpx 0;
+  font-size: 42rpx;
+  line-height: 48rpx;
+}
+
+.desc-para {
+  font-size: 32rpx;
+  line-height: 36rpx;
+  width: 100%;
+  word-wrap: break-word;
+  margin: 20rpx 0;
+}
+
+.desc-img {
+  margin: 40rpx auto;
+  max-width: 100%;
+  display: block;
+  box-shadow: rgba(0,0,0,.12) 0 2rpx 6rpx
+}
+
+.desc-title:first-child {
+  margin-top: 20rpx;
+}
+
+.desc-img:last-child {
+  margin-bottom: 20rpx;
+}

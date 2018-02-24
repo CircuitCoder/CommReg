@@ -1,11 +1,10 @@
 .info-panel {
-  padding: 30rpx;
+  padding: 50rpx 30rpx;
   display: flex;
 }
 
 .primary-info {
   flex: 1;
-  padding: 10rpx 20rpx;
 }
 
 .name {
@@ -80,11 +79,15 @@
 .desc {
   padding: 30rpx;
   background: #F0F0F0;
-  white-space: pre;
   font-size: 28rpx;
   line-height: 32rpx;
   color: rgba(0,0,0,.54);
+
+  display: block;
+  white-space: pre-wrap;
 }
+
+@import 'desc';
 
 .additional {
   padding: 30rpx;

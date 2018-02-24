@@ -28,7 +28,7 @@
       </view>
     </view>
   </view>
-  <view class="desc" wx:if="{{ !entry.disbandment }}">{{ entry.desc }}</view>
+  <rich-text class="desc" wx:if="{{ !entry.disbandment }}" nodes="{{ rendered }}"></rich-text>
   <view class="relevant-list">
     <scroll-view class="relevant-content" scroll-x>
       <view class="relevant" wx:for="{{ relevant }}" data-id="{{ item.id }}" bindtap="gotoId">
