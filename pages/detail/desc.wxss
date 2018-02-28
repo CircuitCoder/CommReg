@@ -26,3 +26,7 @@
 .desc-img:last-child {
   margin-bottom: 20rpx;
 }
+
+.desc-img:first-child {
+  margin-top: 20rpx;
+}
