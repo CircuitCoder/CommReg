@@ -76,7 +76,11 @@ function renderPara(p, images) {
   };
 }
 
-function render(d, images) {
+function render(_d, images) {
+  let d = _d;
+  while (d.length > 0 && d[0] === '\n') d = d.substr(1);
+  while (d.length > 0 && d[d.length - 1] === '\n') d = d.substr(0, d.length - 1);
+
   return d
     .replace('\n\n\n', '\n\n')
     .split('\n\n')

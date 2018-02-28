@@ -3,6 +3,10 @@ view, scroll-view {
   box-sizing: inherit;
 }
 
+input {
+  color: black;
+}
+
 .container {
   height: 100%;
   width: 100%;
