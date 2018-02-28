@@ -73,7 +73,7 @@ input {
 }
 
 .syncing-backdrop {
-  position: absolute;
+  position: fixed;
   top: 120rpx;
   bottom: 0;
   left: 0;
